@@ -1,0 +1,55 @@
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff5722;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    max-width: 100%; /* Ensure the navbar doesn't overflow the page */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Logo Styling */
+.logo img {
+    width: 80px;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffffb3;
+}
+
+/* Ensure the page content doesn't overlap the fixed navbar */
+body {
+    padding-top: 60px; /* Add padding to ensure content doesn't overlap the navbar */
+}
+
+/* Make sure that the navbar content stays centered within the page */
+.navbar-content {
+    max-width: 1200px; /* Set a max width for the navbar content */
+    margin: 0 auto; /* Center the content horizontally */
+    width: 100%;
+}
