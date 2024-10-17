@@ -1,5 +1,5 @@
 import React from 'react';
-import 'Item.scss';
+import 'Item.css';
 import Car from '../../Assets/pexels-pixabay-39501.jpg'
 
 export default function Item() {

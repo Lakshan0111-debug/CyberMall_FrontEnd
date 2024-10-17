@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Optional, if using react-router for navigation
-import './Navbar.scss';
+import './Navbar.css';
 import Logo from '../../Assets/MALL.png'
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SignUp.scss';
+import './SignUp.css';
 import Navbar from '../../Components/Navbar/Navbar';
 
 const SignUp = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LogIn.scss';
+import './LogIn.css';
 import Navbar from '../../Components/Navbar/Navbar';
 const LogIn = () => {
   const [formData, setFormData] = useState({

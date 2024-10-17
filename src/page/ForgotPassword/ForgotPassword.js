@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ForgotPassword.scss';
+import './ForgotPassword.css';
 import Navbar from '../../Components/Navbar/Navbar';
 
 const ForgotPassword = () => {
