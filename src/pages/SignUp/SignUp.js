@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SignUp.css';
-import Navbar from '../../Components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -95,7 +95,7 @@ const SignUp = () => {
             </div>
 
             <p className="login-link">
-              Already have an account? <a href="/login">Login here</a>
+              Already have an account? <a href="/logIn">Login here</a>
             </p>
           </form>
         </div>
