@@ -1,43 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { productRows } from "../../InventoryTableSource";
 import "./InventoryTable.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const InventoryTable = () => {
-  const [data] = useState(productRows);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:8080/products");
-        setData(response.data);
+        const productsWithId = response.data.map((product) => ({
+          ...product,
+          id: product.productId,  // Ensure the correct field name
+        }));
+        setData(productsWithId);
       } catch (error) {
         console.error("Error fetching products data", error);
       }
     };
-
     fetchProducts();
   }, []);
 
   const productColumns = [
-    { field: "ProductId", headerName: "Product ID", width: 100 },
+    { field: "id", headerName: "Product ID", width: 100 }, // Use the correct "id" field
     {
-      field: "ProductName",
+      field: "productName",  // Match with the backend field name
       headerName: "Product",
       width: 230,
-      renderCell: (params) => {
-        return (
-          <div className="cellWithImg">
-            <img className="cellImg" src={params.row.img} alt="avatar" />
-            {params.row.product}
-          </div>
-        );
-      },
+      // renderCell: (params) => {
+      //   return (
+      //     <div className="cellWithImg">
+      //       <img
+      //         className="cellImg"
+      //         src={params.row.imageName ? `/path/to/images/${params.row.imageName}` : 'default-image.png'}
+      //         alt="Product Image"
+      //       />
+      //       {params.row.productName || "No Product Name"}
+      //     </div>
+      //   );
+      // },
     },
-    { field: "SupplierName", headerName: "Supplier", width: 180 },
-    { field: "UnitPrice", headerName: "Unit Price (LKR)", width: 150 },
-    { field: "Quantity", headerName: "Quantity", width: 100, },
+    { field: "description", headerName: "Description", width: 180 },
+    { field: "supplierName", headerName: "Supplier", width: 180 },
+    { field: "unitPrice", headerName: "Unit Price (LKR)", width: 150 },
+    { field: "quantity", headerName: "Quantity", width: 100 },
   ];
 
   const actionColumn = [
@@ -48,7 +56,10 @@ const InventoryTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/manageInventory/productId" style={{ textDecoration: "none" }}>
+            <Link
+              to={`/manageInventory/${params.row.id}`}  // Use "id" as it should be unique
+              style={{ textDecoration: "none" }}
+            >
               <div className="viewButton">VIEW</div>
             </Link>
             <div className="deleteButton">DELETE</div>
@@ -72,8 +83,10 @@ const InventoryTable = () => {
         columns={productColumns.concat(actionColumn)}
         pageSize={7}
         rowsPerPageOptions={[5]}
+        getRowId={(row) => row.id} // Ensure DataGrid uses the correct unique id
       />
     </div>
   );
 };
+
 export default InventoryTable;
