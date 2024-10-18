@@ -7,10 +7,23 @@ import { Link } from "react-router-dom";
 const InventoryTable = () => {
   const [data] = useState(productRows);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/products");
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching products data", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   const productColumns = [
-    { field: "id", headerName: "Product ID", width: 100 },
+    { field: "ProductId", headerName: "Product ID", width: 100 },
     {
-      field: "product",
+      field: "ProductName",
       headerName: "Product",
       width: 230,
       renderCell: (params) => {
@@ -22,9 +35,9 @@ const InventoryTable = () => {
         );
       },
     },
-    { field: "supplier", headerName: "Supplier", width: 180 },
-    { field: "unitPrice", headerName: "Unit Price (LKR)", width: 150 },
-    { field: "quantity", headerName: "Quantity", width: 100, },
+    { field: "SupplierName", headerName: "Supplier", width: 180 },
+    { field: "UnitPrice", headerName: "Unit Price (LKR)", width: 150 },
+    { field: "Quantity", headerName: "Quantity", width: 100, },
   ];
 
   const actionColumn = [
