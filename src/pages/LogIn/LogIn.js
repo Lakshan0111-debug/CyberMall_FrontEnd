@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LogIn.css';
-import Navbar from '../../Components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 const LogIn = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -45,13 +45,13 @@ const LogIn = () => {
             />
 
             <p className="forgot-password">
-              <a href="/ForgotPassword">Forgot Password?</a>
+              <a href="/forgotPassword">Forgot Password?</a>
             </p>
 
             <button type="submit">Log In</button>
 
             <p className="signup-link">
-              Don't have an account? <a href="/signup">Sign Up here</a>
+              Don't have an account? <a href="/signUp">Sign Up here</a>
             </p>
           </form>
         </div>

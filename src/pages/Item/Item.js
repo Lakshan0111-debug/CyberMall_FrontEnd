@@ -1,6 +1,6 @@
 import React from 'react';
-import 'Item.css';
-import Car from '../../Assets/pexels-pixabay-39501.jpg'
+import './Item.css';
+import Car from '../../assets/pexels-pixabay-39501.jpg'
 
 export default function Item() {
   return (

@@ -2,8 +2,7 @@ import React from "react";
 import "./AddNewSupplier.css";
 import AdminSidebar from "../../components/adminsidebar/AdminSidebar";
 import AdminNavbar from "../../components/adminnavbar/AdminNavbar";
-import ProfileImg from "../../assets/person/DefaultProfile.jpg"
-import { DriveFolderUploadOutlined } from "@mui/icons-material";
+import ProfileImg from "../../assets/DefaultProfile.jpg"
 
 const AddNewSupplier = () => {
 

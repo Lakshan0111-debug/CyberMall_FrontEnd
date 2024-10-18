@@ -1,25 +1,93 @@
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import './App.css';
-import Home from './page/Home/Home'
-import LogIn from './page/LogIn/LogIn';
-import SignUp from './page/SignUp/SignUp';
-import ForgotPassword from './page/ForgotPassword/ForgotPassword';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import SignUp from './pages/SignUp/SignUp';
+import LogIn from './pages/LogIn/LogIn';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import Item from './pages/Item/Item';
+import Review from './pages/Review/Review';
+import AdminDashboard from "./pages/admindashboard/AdminDashboard";
+import ManageInventory from './pages/manageinventory/ManageInventory';
+import AddNewProduct from './pages/addnewproduct/AddNewProduct';
+import ManageCustomers from "./pages/managecustomers/ManageCustomers";
+import ManageSuppliers from './pages/managesuppliers/ManageSuppliers';
+import AddNewSupplier from './pages/addnewsupplier/AddNewSupplier';
+import ManageOrders from './pages/manageorders/ManageOrders';
+import ManageReviews from './pages/managereviews/ManageReviews';
+import ViewProduct from './pages/viewproduct/ViewProduct';
+import UpdateProduct from './pages/updateproduct/UpdateProduct';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>
+  },
+  {
+    path: "/signUp",
+    element: <SignUp/>
+  },
+  {
+    path: "/logIn",
+    element: <LogIn/>
+  },
+  {
+    path: "/forgotPassword",
+    element: <ForgotPassword/>
+  },
+  {
+    path: "/item",
+    element: <Item/>
+  },
+  {
+    path: "/review",
+    element: <Review/>
+  },
+  {
+    path: "/adminDashboard",
+    element: <AdminDashboard/>
+  },
+  {
+    path: "/manageInventory",
+    element: <ManageInventory/>,
+  },
+  {
+    path: "/manageInventory/addNew",
+    element: <AddNewProduct/>,
+  },
+  {
+    path: "/manageInventory/productId",
+    element: <ViewProduct/>,
+  },
+  {
+    path: "/manageInventory/productId/updateProduct",
+    element: <UpdateProduct/>,
+  },
+  {
+    path: "/manageCustomers",
+    element: <ManageCustomers/>,
+  },
+  {
+    path: "/manageSuppliers",
+    element: <ManageSuppliers/>,
+  },
+  {
+    path: "/manageSuppliers/addNew",
+    element: <AddNewSupplier/>,
+  },
+  {
+    path: "/manageOrders",
+    element: <ManageOrders/>,
+  },
+  {
+    path: "/manageReviews",
+    element: <ManageReviews/>,
+  },
+]);
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/LogIn" element={<LogIn/>}></Route>
-        <Route path="/SignUp" element={<SignUp/>}></Route>
-        <Route path="/ForgotPassword" element={<ForgotPassword/>}></Route>
-
-      </Routes>
-    
-    </BrowserRouter>
-    
-
+    <div>
+      <RouterProvider router={router} />
+    </div>
   );
 }
 
