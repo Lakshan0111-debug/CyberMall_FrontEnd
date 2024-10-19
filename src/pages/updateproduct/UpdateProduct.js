@@ -10,6 +10,7 @@ const UpdateProduct = ({ product }) => {
   const [formData, setFormData] = useState({
     productId: "",
     productName: "",
+    description: "",
     supplierName: "None",
     unitPrice: "",
     quantity: "",
@@ -22,6 +23,7 @@ const UpdateProduct = ({ product }) => {
       setFormData({
         productId: product.productId,
         productName: product.productName,
+        description: product.description,
         supplierName: product.supplierName,
         unitPrice: product.unitPrice,
         quantity: product.quantity,
@@ -45,8 +47,8 @@ const UpdateProduct = ({ product }) => {
 
     // Limit to max 4 images
     if (newPreviews.length + imagePreviews.length > 4) {
-      alert("You can only upload a maximum of 4 images.");
-      return;
+        alert("You can only upload a maximum of 4 images.");
+        return;
     }
 
     setImagePreviews((prev) => [...prev, ...newPreviews].slice(0, 4)); // Ensure only 4 images
@@ -89,12 +91,12 @@ const UpdateProduct = ({ product }) => {
   }
 
   return (
-    <div className='editProduct'>
+    <div className='updateProduct'>
       <AdminSidebar />
-      <div className='editProductContainer'>
+      <div className='updateProductContainer'>
         <AdminNavbar />
         <div className='top'>
-          <h1>EDIT PRODUCT</h1>
+          <h1>UPDATE PRODUCT</h1>
         </div>
         <div className='bottom'>
           <div className="left">
@@ -156,6 +158,18 @@ const UpdateProduct = ({ product }) => {
                   value={formData.productName} 
                   onChange={handleChange} 
                   placeholder='Enter Product Name' 
+                  required 
+                />
+              </div>
+              <div className='formInput'>
+                <label>Description</label>
+                <input 
+                  type='text' 
+                  id='DESCRIPTION' 
+                  name='description' 
+                  value={formData.description} 
+                  onChange={handleChange} 
+                  placeholder='Enter Product Description' 
                   required 
                 />
               </div>

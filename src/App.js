@@ -8,13 +8,18 @@ import Review from './pages/Review/Review';
 import AdminDashboard from "./pages/admindashboard/AdminDashboard";
 import ManageInventory from './pages/manageinventory/ManageInventory';
 import AddNewProduct from './pages/addnewproduct/AddNewProduct';
-import ManageCustomers from "./pages/managecustomers/ManageCustomers";
-import ManageSuppliers from './pages/managesuppliers/ManageSuppliers';
-import AddNewSupplier from './pages/addnewsupplier/AddNewSupplier';
-import ManageOrders from './pages/manageorders/ManageOrders';
-import ManageReviews from './pages/managereviews/ManageReviews';
 import ViewProduct from './pages/viewproduct/ViewProduct';
 import UpdateProduct from './pages/updateproduct/UpdateProduct';
+import ManageCustomers from "./pages/managecustomers/ManageCustomers";
+import ViewCustomer from './pages/viewcustomer/ViewCustomer';
+import ManageSuppliers from './pages/managesuppliers/ManageSuppliers';
+import AddNewSupplier from './pages/addnewsupplier/AddNewSupplier';
+import ViewSupplier from './pages/viewsupplier/ViewSupplier';
+import UpdateSupplier from './pages/updatesupplier/UpdateSupplier';
+import ManageOrders from './pages/manageorders/ManageOrders';
+import ViewOrder from './pages/vieworder/ViewOrder';
+import ManageReviews from './pages/managereviews/ManageReviews';
+import ViewReview from './pages/viewreview/ViewReview';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +71,10 @@ const router = createBrowserRouter([
     element: <ManageCustomers/>,
   },
   {
+    path: "/manageCustomers/customerId",
+    element: <ViewCustomer/>,
+  },
+  {
     path: "/manageSuppliers",
     element: <ManageSuppliers/>,
   },
@@ -74,12 +83,28 @@ const router = createBrowserRouter([
     element: <AddNewSupplier/>,
   },
   {
+    path: "/manageSuppliers/supplierId",
+    element: <ViewSupplier/>,
+  },
+  {
+    path: "/manageSuppliers/supplierId/updateSupplier",
+    element: <UpdateSupplier/>,
+  },
+  {
     path: "/manageOrders",
     element: <ManageOrders/>,
   },
   {
+    path: "/manageOrders/orderId",
+    element: <ViewOrder/>,
+  },
+  {
     path: "/manageReviews",
     element: <ManageReviews/>,
+  },
+  {
+    path: "/manageReviews/reviewId",
+    element: <ViewReview/>,
   },
 ]);
 

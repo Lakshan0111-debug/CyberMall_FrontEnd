@@ -12,7 +12,7 @@ const InventoryTable = () => {
     {
       field: "product",
       headerName: "Product",
-      width: 230,
+      width: 180,
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
@@ -22,9 +22,10 @@ const InventoryTable = () => {
         );
       },
     },
+    { field: "description", headerName: "Description", width: 200 },
     { field: "supplier", headerName: "Supplier", width: 180 },
-    { field: "unitPrice", headerName: "Unit Price (LKR)", width: 150 },
-    { field: "quantity", headerName: "Quantity", width: 100, },
+    { field: "unitPrice", headerName: "Unit Price (LKR)", width: 120 },
+    { field: "quantity", headerName: "Quantity", width: 80, },
   ];
 
   const actionColumn = [

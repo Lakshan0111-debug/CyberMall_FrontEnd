@@ -11,6 +11,7 @@ const ViewProduct = ({ product = {} }) => {
     const {
         productId = "12345",
         productName = "Shopping Cart",
+        description = "This bag is a....",
         supplierName = "Sachintha Rashen",
         unitPrice = "234.99",
         quantity = "36",
@@ -32,7 +33,7 @@ const ViewProduct = ({ product = {} }) => {
             <div className='viewProductContainer'>
                 <AdminNavbar />
                 <div className='top'>
-                    <h1>VIEW PRODUCT</h1>
+                    <h1>PRODUCT DETAILS</h1>
                 </div>
                 <div className='bottom'>
                     <div className="left">
@@ -59,6 +60,10 @@ const ViewProduct = ({ product = {} }) => {
                             <div className="detailItem">
                                 <span className="itemKey">Product ID:</span>
                                 <span className="itemValue">{productId}</span>
+                            </div>
+                            <div className="detailItem">
+                                <span className="itemKey">Description:</span>
+                                <span className="itemValue">{description}</span>
                             </div>
                             <div className="detailItem">
                                 <span className="itemKey">Supplier:</span>

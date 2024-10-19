@@ -12,7 +12,7 @@ const CustomersTable = () => {
     {
       field: "customer",
       headerName: "Customer",
-      width: 230,
+      width: 180,
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
@@ -22,7 +22,8 @@ const CustomersTable = () => {
         );
       },
     },
-    { field: "email", headerName: "E-mail", width: 150 },
+    { field: "username", headerName: "Username", width: 100 },
+    { field: "email", headerName: "E-mail", width: 140 },
     { field: "phoneNo", headerName: "Phone No", width: 120 },
     { field: "address", headerName: "Address", width: 200, },
   ];

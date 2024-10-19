@@ -1,8 +1,8 @@
-.viewProduct{
+.viewSupplier{
     width: 100%;
     display: flex;
 
-    .viewProductContainer{
+    .viewSupplierContainer{
         flex: 6;
 
         .top{
@@ -36,10 +36,8 @@
                 align-items: center;
                 justify-content: center;
 
-                .imageGrid{
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 30px;
+                .imageContainer{
+                    display: flex;
 
                     .imagePreview{
                         width: 150px;

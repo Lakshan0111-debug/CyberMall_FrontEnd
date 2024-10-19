@@ -1,8 +1,8 @@
-.viewProduct{
+.viewCustomer{
     width: 100%;
     display: flex;
 
-    .viewProductContainer{
+    .viewCustomerContainer{
         flex: 6;
 
         .top{
@@ -36,10 +36,8 @@
                 align-items: center;
                 justify-content: center;
 
-                .imageGrid{
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 30px;
+                .imageContainer{
+                    display: flex;
 
                     .imagePreview{
                         width: 150px;
@@ -87,19 +85,6 @@
                         .itemValue{
                             padding: 5px;
                         }
-                    }
-    
-                    button{
-                        position: relative;
-                        width: 150px;
-                        padding: 10px;
-                        margin: 10px 0;
-                        border: none;
-                        border-radius: 5px;
-                        background-color: #425060;
-                        color: white;
-                        font-weight: bold;
-                        cursor: pointer;
                     }
                 }
             }
