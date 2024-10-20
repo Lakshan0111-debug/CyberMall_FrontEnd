@@ -54,11 +54,11 @@ const router = createBrowserRouter([
     element: <AddNewProduct/>,
   },
   {
-    path: "/manageInventory/productId",
+    path: "/manageInventory/:productId",
     element: <ViewProduct/>,
   },
   {
-    path: "/manageInventory/productId/updateProduct",
+    path: "/manageInventory/:productId/updateProduct",
     element: <UpdateProduct/>,
   },
   {

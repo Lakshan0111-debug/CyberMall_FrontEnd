@@ -56,7 +56,7 @@ const AddNewProduct = () => {
     data.append('quantity', formData.quantity);
 
     try {
-      await axios.post('http://localhost:8081/products/addP', data, {
+      await axios.post('http://localhost:8080/products/addP', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -68,11 +68,11 @@ const AddNewProduct = () => {
 
     setImagePreviews([]);
     setFormData({
-      productName: "",
-      description: "",
-      supplierName: "",
-      unitPrice: "",
-      quantity: ""
+      productName: "productName",
+      description: "description",
+      supplierName: "supplierName",
+      unitPrice: "unitPrice",
+      quantity: "quantity"
     });
     e.target.reset();
   };
