@@ -14,6 +14,7 @@ import AddNewSupplier from './pages/addnewsupplier/AddNewSupplier';
 import ManageOrders from './pages/manageorders/ManageOrders';
 import ManageReviews from './pages/managereviews/ManageReviews';
 import ViewProduct from './pages/viewproduct/ViewProduct';
+import ViewSupplier from './pages/viewsupplier/ViewSupplier';
 import UpdateProduct from './pages/updateproduct/UpdateProduct';
 
 const router = createBrowserRouter([
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
     path: "/manageInventory/:productId",
     element: <ViewProduct/>,
   },
+ 
   {
     path: "/manageInventory/:productId/updateProduct",
     element: <UpdateProduct/>,
@@ -72,6 +74,10 @@ const router = createBrowserRouter([
   {
     path: "/manageSuppliers/addNew",
     element: <AddNewSupplier/>,
+  },
+  {
+    path: "/manageSuppliers/:supplierId",
+    element: <ViewSupplier/>,
   },
   {
     path: "/manageOrders",
