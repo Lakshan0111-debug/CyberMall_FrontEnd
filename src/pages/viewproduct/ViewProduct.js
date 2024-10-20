@@ -1,29 +1,53 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ViewProduct.css";
 import AdminSidebar from "../../components/adminsidebar/AdminSidebar";
 import AdminNavbar from "../../components/adminnavbar/AdminNavbar";
+import axios from "axios";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-const ViewProduct = ({ product = {} }) => {
-    const navigate = useNavigate(); // Initialize useNavigate
+const ViewProduct = () => {
+    const { productId } = useParams();
+    const navigate = useNavigate();
 
-    const {
-        productId = "12345",
-        productName = "Shopping Cart",
-        supplierName = "Sachintha Rashen",
-        unitPrice = "234.99",
-        quantity = "36",
-        images = [],
-    } = product;
+    const [productName, setProductName] = useState('');
+    const [supplierName, setSupplierName] = useState('');
+    const [unitPrice, setUnitPrice] = useState('');
+    const [quantity, setQuantity] = useState('');
+    const [image, setImage] = useState(''); // State for a single image or base64 string
 
-    const filledImages = [...images];
+    useEffect(() => {
+        loadProductDetails();
+    }, [productId]);
+
+    async function loadProductDetails() {
+        try {
+            const response = await axios.get(`http://localhost:8080/products/${productId}`);
+            const productData = response.data;
+            setProductName(productData.productName);
+            setSupplierName(productData.supplierName);
+            setUnitPrice(productData.unitPrice);
+            setQuantity(productData.quantity);
+            
+            
+            // Assuming image is sent as a base64 encoded string
+            if (productData.image) {
+                // If you know the format is jpg, use this:
+                setImage(`data:image/jpeg;base64,${productData.image}`);
+            }
+        } catch (error) {
+            console.error("Error fetching product details:", error);
+        }
+    }
+
+    // Placeholder to handle up to 4 images in grid (for future scaling)
+    const filledImages = image ? [image] : []; // Single image stored in array
     while (filledImages.length < 4) {
-        filledImages.push(null);
+        filledImages.push(null); // Push null to fill empty grid slots
     }
 
     const handleEdit = () => {
-        navigate(`/manageInventory/productId/updateProduct`); // Navigate to the Edit Product page
+        navigate(`/manageInventory/${productId}/updateProduct`);
     };
 
     return (
@@ -45,8 +69,9 @@ const ViewProduct = ({ product = {} }) => {
                                         alt={`Uploaded Preview ${index + 1}`}
                                         className="imagePreview"
                                     />
-                                ) :
-                                <ShoppingCartOutlinedIcon className="placeholder" />
+                                ) : (
+                                    <ShoppingCartOutlinedIcon key={index} className="placeholder" />
+                                )
                             ))}
                         </div>
                     </div>
@@ -72,7 +97,7 @@ const ViewProduct = ({ product = {} }) => {
                                 <span className="itemKey">Quantity:</span>
                                 <span className="itemValue">{quantity}</span>
                             </div>
-                            <button type="button" onClick={handleEdit}>Edit</button> {/* Add onClick handler */}
+                            <button type="button" onClick={handleEdit}>Edit</button>
                         </div>
                     </div>
                 </div>
