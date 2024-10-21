@@ -16,6 +16,7 @@ import ManageReviews from './pages/managereviews/ManageReviews';
 import ViewProduct from './pages/viewproduct/ViewProduct';
 import ViewSupplier from './pages/viewsupplier/ViewSupplier';
 import UpdateProduct from './pages/updateproduct/UpdateProduct';
+import UpdateSupplier from './pages/updatesupplier/UpdateSupplier';
 
 const router = createBrowserRouter([
   {
@@ -78,7 +79,12 @@ const router = createBrowserRouter([
   {
     path: "/manageSuppliers/:supplierId",
     element: <ViewSupplier/>,
+  },  
+  {
+    path: "/manageSupplier/updateSuppier/:supplierId",
+    element: <UpdateSupplier/>,
   },
+
   {
     path: "/manageOrders",
     element: <ManageOrders/>,
