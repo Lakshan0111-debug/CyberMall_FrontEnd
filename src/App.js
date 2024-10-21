@@ -20,6 +20,8 @@ import ManageOrders from './pages/manageorders/ManageOrders';
 import ViewOrder from './pages/vieworder/ViewOrder';
 import ManageReviews from './pages/managereviews/ManageReviews';
 import ViewReview from './pages/viewreview/ViewReview';
+import Cart from './pages/Cart/Cart';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
   {
     path: "/review",
     element: <Review/>
+  },
+  {
+    path: "/cart",
+    element: <Cart/>
+  },
+  {
+    path: "/placeOrder",
+    element: <PlaceOrder/>
   },
   {
     path: "/adminDashboard",
@@ -111,7 +121,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}/>
     </div>
   );
 }
