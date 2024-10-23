@@ -32,19 +32,10 @@ const ViewSupplier = () => {
             console.error("Error fetching supplier details:", error);
         }
     }
-    
-
-
-
-
 
     const handleEdit = () => {
         navigate(`/manageSuppliers/${supplierId}/updateSupplier`); // Navigate to the Edit Product page
     };
-
-
-
-
 
     return (
         <div className="viewSupplier">

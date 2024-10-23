@@ -14,7 +14,6 @@ const ViewProduct = () => {
     const [supplierName, setSupplierName] = useState('');
     const [unitPrice, setUnitPrice] = useState('');
     const [quantity, setQuantity] = useState('');
-    const [image, setImage] = useState(''); // State for a single image or base64 string
 
     useEffect(() => {
         loadProductDetails();
@@ -28,22 +27,10 @@ const ViewProduct = () => {
             setSupplierName(productData.supplierName);
             setUnitPrice(productData.unitPrice);
             setQuantity(productData.quantity);
-            
-            
-            // Assuming image is sent as a base64 encoded string
-            if (productData.image) {
-                // If you know the format is jpg, use this:
-                setImage(`data:image/jpeg;base64,${productData.image}`);
-            }
-        } catch (error) {
+        }
+        catch (error) {
             console.error("Error fetching product details:", error);
         }
-    }
-
-    // Placeholder to handle up to 4 images in grid (for future scaling)
-    const filledImages = image ? [image] : []; // Single image stored in array
-    while (filledImages.length < 4) {
-        filledImages.push(null); // Push null to fill empty grid slots
     }
 
     const handleEdit = () => {
@@ -59,7 +46,7 @@ const ViewProduct = () => {
                     <h1>VIEW PRODUCT</h1>
                 </div>
                 <div className='bottom'>
-                    <div className="left">
+                    {/*<div className="left">
                         <div className="imageGrid">
                             {filledImages.map((src, index) => (
                                 src ? (
@@ -74,7 +61,7 @@ const ViewProduct = () => {
                                 )
                             ))}
                         </div>
-                    </div>
+                    </div>*/}
                     <div className="right">
                         <div className="details">
                             <div className="detailItem">

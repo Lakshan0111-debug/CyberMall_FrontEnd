@@ -49,7 +49,7 @@ const UpdateProduct = () => {
     axios.put(`http://localhost:8080/products/${productId}`, updatedProduct)
       .then(response => {
         console.log('Product details updated:', response.data);
-        navigate('/products');
+        navigate('/manageInventory');
       })
       .catch(error => {
         console.error("There was an error updating the product!", error);

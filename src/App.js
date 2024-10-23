@@ -14,9 +14,10 @@ import AddNewSupplier from './pages/addnewsupplier/AddNewSupplier';
 import ManageOrders from './pages/manageorders/ManageOrders';
 import ManageReviews from './pages/managereviews/ManageReviews';
 import ViewProduct from './pages/viewproduct/ViewProduct';
-import ViewSupplier from './pages/viewsupplier/ViewSupplier';
 import UpdateProduct from './pages/updateproduct/UpdateProduct';
+import ViewSupplier from './pages/viewsupplier/ViewSupplier';
 import UpdateSupplier from './pages/updatesupplier/UpdateSupplier';
+import ViewCustomer from './pages/viewcustomer/ViewCustomer';
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,6 @@ const router = createBrowserRouter([
     path: "/manageInventory/:productId",
     element: <ViewProduct/>,
   },
- 
   {
     path: "/manageInventory/:productId/updateProduct",
     element: <UpdateProduct/>,
@@ -67,6 +67,10 @@ const router = createBrowserRouter([
   {
     path: "/manageCustomers",
     element: <ManageCustomers/>,
+  },
+  {
+    path: "/manageCustomers/:customerId",
+    element: <ViewCustomer/>,
   },
   {
     path: "/manageSuppliers",
@@ -81,10 +85,9 @@ const router = createBrowserRouter([
     element: <ViewSupplier/>,
   },  
   {
-    path: "/manageSupplier/updateSuppier/:supplierId",
+    path: "/manageSuppliers/:supplierId/updateSupplier",
     element: <UpdateSupplier/>,
   },
-
   {
     path: "/manageOrders",
     element: <ManageOrders/>,

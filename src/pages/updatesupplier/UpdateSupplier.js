@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./UpdateSupplier.css";
 import AdminSidebar from "../../components/adminsidebar/AdminSidebar";
 import AdminNavbar from "../../components/adminnavbar/AdminNavbar";
@@ -6,32 +7,52 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { DriveFolderUploadOutlined, Close } from "@mui/icons-material";
 import axios from "axios"; // Import axios for API calls
 
-const UpdateSupplier = ({ supplier }) => {
-  const [imagePreview, setImagePreview] = useState([]);
-  const [formData, setFormData] = useState({
-    supplierId: "",
-    supplierName: "",
-    supplierEmail: "",
-    supplierPhone: "",
-    supplierAddress: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const UpdateSupplier = () => {
+  const { supplierId } = useParams();
+  const navigate = useNavigate();
+
+  const [supplierName, setSupplierName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
 
   useEffect(() => {
-    // Populate the form with existing supplier data when component mounts
-    if (supplier) {
-      setFormData({
-        supplierId: supplier.supplierId,
-        supplierName: supplier.supplierName,
-        supplierEmail: supplier.supplierEmail,
-        supplierPhone: supplier.supplierPhone,
-        supplierAddress: supplier.supplierAddress,
-      });
-      setImagePreview(supplier.image); // Set existing image if available
-    }
-  }, [supplier]);
+    loadSupplierDetails();
+  }, [supplierId]);
 
-  const handleImageChange = (e) => {
+  const loadSupplierDetails = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/suppliers/${supplierId}`);
+      const supplier = response.data;
+      setSupplierName(supplier.supplierName);
+      setEmail(supplier.email);
+      setPhoneNumber(supplier.phoneNumber);
+      setAddress(supplier.address);
+
+    } catch (error) {
+      console.error("Error fetching supplier details:", error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const updatedSupplier = {supplierId: parseInt(supplierId),supplierName,email,phoneNumber,address
+    };
+
+    console.log('Updating supplier with data:', updatedSupplier);
+
+    axios.put(`http://localhost:8080/suppliers/${supplierId}`, updatedSupplier)
+      .then(response => {
+        console.log('Supplier details updated:', response.data);
+        navigate('/manageSuppliers');
+      })
+      .catch(error => {
+        console.error("There was an error updating the supplier!", error);
+      });
+  };
+
+  /*const handleImageChange = (e) => {
     const file = e.target.files[0]; // Allow only one file
     const newPreview = [];
 
@@ -62,41 +83,7 @@ const UpdateSupplier = ({ supplier }) => {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Create a FormData object for the form submission
-    const formDataObj = new FormData();
-    formDataObj.append("supplierId", formData.supplierId);
-    formDataObj.append("supplierName", formData.supplierName);
-    formDataObj.append("email", formData.supplierEmail);
-    formDataObj.append("phoneNumber", formData.supplierPhone);
-    formDataObj.append("address", formData.supplierAddress);
-
-    if (imagePreview) {
-      const imageFile = document.querySelector('#fileInput').files[0];
-      formDataObj.append("image", imageFile); // Add the image file to the FormData
-    }
-
-    try {
-      // Make the PUT request to update the supplier data
-      const response = await axios.put(`http://localhost:8080/suppliers/${formData.supplierId}`, formDataObj, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Specify the content type
-        },
-      });
-
-      alert("Supplier updated successfully!");
-    } catch (error) {
-      console.error("Error updating supplier:", error);
-      alert("There was an error updating the supplier.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  };*/
 
   return (
     <div className='updateSupplier'>
@@ -108,7 +95,7 @@ const UpdateSupplier = ({ supplier }) => {
         </div>
         <div className='bottom'>
           <div className="left">
-            <div className="imageContainer">
+            {/*<div className="imageContainer">
               {imagePreview ? (
                 <div className="imageWrapper">
                   <img
@@ -121,12 +108,12 @@ const UpdateSupplier = ({ supplier }) => {
               ) : (
                 <ShoppingCartOutlinedIcon className="placeholder" />
               )}
-            </div>
+            </div>*/}
           </div>
           <div className='right'>
             <form onSubmit={handleSubmit}>
               <div className="formInput">
-                <label htmlFor='fileInput' className='fileUploadLabel'>
+                {/*<label htmlFor='fileInput' className='fileUploadLabel'>
                   <DriveFolderUploadOutlined className='uploadIcon' />
                   <span>Choose Image</span>
                 </label>
@@ -136,67 +123,55 @@ const UpdateSupplier = ({ supplier }) => {
                   multiple 
                   onChange={handleImageChange} 
                   style={{ display: "none" }} 
-                />
+                />*/}
               </div>
               <div className='formInput'>
                 <label>Supplier ID</label>
-                <input 
-                  type='number' 
-                  id='SUPPLIER_ID' 
-                  name='supplierId' 
-                  value={formData.supplierId} 
-                  onChange={handleChange} 
-                  placeholder='Enter Supplier ID' 
-                  required 
-                />
+                <label>{supplierId}</label>
               </div>
               <div className='formInput'>
                 <label>Supplier Name</label>
                 <input 
                   type='text' 
-                  id='SUPPLIER_NAME' 
                   name='supplierName' 
-                  value={formData.supplierName} 
-                  onChange={handleChange} 
-                  placeholder='Enter Supplier Name' 
+                  value={supplierName} 
+                  onChange={(e)=> setSupplierName(e.target.value)}
+                  placeholder='Enter Supplier Name'
                   required 
                 />
               </div>
               <div className='formInput'>
                 <label>E-Mail</label>
                 <input 
-                  type='email' 
-                  id='SUPPLIER_EMAIL' 
-                  name='supplierEmail' 
-                  value={formData.supplierEmail} 
-                  onChange={handleChange} 
+                  type='email'
+                  name='supplierEmail'
+                  value={email}
+                  onChange={(e)=> setEmail(e.target.value)}
                   placeholder="Enter Supplier's E-Mail"
                 />
               </div>
               <div className='formInput'>
                 <label>Phone</label>
                 <input 
-                  type='number' 
-                  id='SUPPLIER_PHONE' 
-                  name='supplierPhone' 
-                  value={formData.supplierPhone} 
-                  onChange={handleChange} 
-                  placeholder="Enter Supplier's Phone Number" 
+                  type='number'
+                  name='supplierPhone'
+                  value={phoneNumber}
+                  onChange={(e)=> setPhoneNumber(e.target.value)}
+                  placeholder="Enter Supplier's Phone Number"
                 />
               </div>
               <div className='formInput'>
                 <label>Address</label>
                 <input 
-                  type='text' 
-                  id='SUPPLIER_ADDRESS' 
-                  name='supplierAddress' 
-                  value={formData.supplierAddress} 
-                  onChange={handleChange} 
+                  type='text'
+                  name='supplierAddress'
+                  value={address}
+                  onChange={(e)=> setAddress(e.target.value)}
                   placeholder="Enter Supplier's Address"
                 />
               </div>
-              <button type='submit' disabled={isSubmitting}>
-                {isSubmitting ? "Updating..." : "Update"}
+              <button type='submit'>
+                Update Supplier
               </button>
             </form>
           </div>
