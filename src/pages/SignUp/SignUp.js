@@ -4,13 +4,13 @@ import Navbar from '../../components/Navbar/Navbar';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
-    password: '',
+    phone: '',
     address: '',
     nic: '',
-    phone: '',
+    username: '',
+    password: ''
   });
 
   const handleChange = (e) => {
@@ -34,25 +34,49 @@ const SignUp = () => {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={formData.lastName}
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
               onChange={handleChange}
               required
             />
             <input
               type="email"
               name="email"
-              placeholder="Your email"
+              placeholder="Your E-Mail"
               value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Your Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="address"
+              placeholder="Your Address"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="nic"
+              placeholder="Your NIC"
+              value={formData.nic}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
               onChange={handleChange}
               required
             />
@@ -61,30 +85,6 @@ const SignUp = () => {
               name="password"
               placeholder="Password"
               value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="nic"
-              placeholder="NIC"
-              value={formData.nic}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              value={formData.phone}
               onChange={handleChange}
               required
             />
