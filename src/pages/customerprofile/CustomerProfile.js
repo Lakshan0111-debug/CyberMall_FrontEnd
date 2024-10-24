@@ -1,19 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import './CustomerProfile.css';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 const CustomerProfile = (customer) => {
-    const {
-        customerUsername = "oLiv36",
-        customerName = "Olivia",
-        customerEmail = "olivia@gmail.com",
-        customerPhone = "0764534455",
-        customerAddress = "Koswaththa, Battaramulla.",
-        customerNIC = "993747583V",
-        password = "12345",
-        //image = null,
-    } = customer;
+    const { customerId } = useParams();
+    const navigate = useNavigate();
+
+    const [customerName, setCustomerName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [address, setAddress] = useState('');
+    const [username, setUserName] = useState('');
+    const [nic, setNic] = useState('');
+    const [password, setPassword] = useState('');
+
+    
+    useEffect(() => {
+        loadCustomerDetails();
+    }, [customerId]);
+
+    async function loadCustomerDetails() {
+        try {
+            const response = await axios.get(`http://localhost:8080/customers/${customerId}`);
+            const customerData = response.data;
+            setCustomerName(customerData.customerName);
+            setEmail(customerData.email);
+            setPhoneNumber(customerData.phoneNumber);
+            setAddress(customerData.address);
+            setUserName(customerData.username);
+            setNic(customerData.nic);
+            setPassword(customerData.password);
+        }
+        catch (error) {
+            console.error("Error fetching customer details:", error);
+        }
+    }
+
+    const handleEdit = () => {
+        navigate(`/manageCustomers/${customerId}/updateCustomer`); // Navigate to the Edit Product page
+    };
     
     return (
     <div>
@@ -24,7 +52,7 @@ const CustomerProfile = (customer) => {
                 <div className="details">
                     <div className="detailItem">
                         <span className="itemKey">Username: </span>
-                        <span className="itemValue">{customerUsername}</span>
+                        <span className="itemValue">{username}</span>
                     </div>
                     <div className="detailItem">
                         <span className="itemKey">Customer: </span>
@@ -32,19 +60,19 @@ const CustomerProfile = (customer) => {
                     </div>
                     <div className="detailItem">
                         <span className="itemKey">E-Mail: </span>
-                        <span className="itemValue">{customerEmail}</span>
+                        <span className="itemValue">{email}</span>
                     </div>
                     <div className="detailItem">
                         <span className="itemKey">Phone: </span>
-                        <span className="itemValue">{customerPhone}</span>
+                        <span className="itemValue">{phoneNumber}</span>
                     </div>
                     <div className="detailItem">
                         <span className="itemKey">Address: </span>
-                        <span className="itemValue">{customerAddress}</span>
+                        <span className="itemValue">{address}</span>
                     </div>
                     <div className="detailItem">
                         <span className="itemKey">NIC: </span>
-                        <span className="itemValue">{customerNIC}</span>
+                        <span className="itemValue">{nic}</span>
                     </div>
                     <div className="detailItem">
                         <span className="itemKey">Password: </span>
@@ -52,7 +80,7 @@ const CustomerProfile = (customer) => {
                     </div>
                     <div className='detailItem'>
                         <Link to='/customerProfile/customerId/updateProfile'>
-                            <button type="submit">Edit Profile</button>
+                            <button type="submit"onClick={handleEdit}>Edit Profile</button>
                         </Link>
                     </div>
                 </div>
