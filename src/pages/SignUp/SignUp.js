@@ -5,14 +5,16 @@ import axios from 'axios';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    customerName: '',
     email: '',
     phoneNumber: '',
     address: '',
     nic: '',
-    username: '',
+    userName: '',
     password: ''
   });
+
+  // Handle input change to update form data
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,17 +22,19 @@ const SignUp = () => {
       [name]: value
     }));
   };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = {
-      name: formData.name,
+      customerName: formData.customerName,
       email: formData.email,
       phoneNumber: formData.phoneNumber,
       address: formData.address,
-      nic:formData.nic,
-      username:formData.username,
-      Password:formData.password
+      nic: formData.nic,
+      userName: formData.userName,
+      password: formData.password // Ensure password is lowercase
     };
 
     try {
@@ -39,36 +43,35 @@ const SignUp = () => {
           'Content-Type': 'application/json'
         }
       });
-      alert("Customer added successfully");
+      alert('Customer added successfully');
     } catch (error) {
-      console.error("There was an error adding the customer:", error);
+      console.error('There was an error adding the customer:', error);
     }
 
-
+    // Reset form fields after submission
     setFormData({
-      name: "",
-      address: "",
-      email: "",
-      phoneNumber: "",
-      nic: "",
-      username:"",
-      password:"" 
+      customerName: '',
+      email: '',
+      phoneNumber: '',
+      address: '',
+      nic: '',
+      userName: '',
+      password: ''
     });
   };
 
-  
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="signup-container">
         <div className="signup-box">
           <h2>Sign Up</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              name="name"
+              name="customerName"
               placeholder="Your Name"
-              value={formData.name}
+              value={formData.customerName}
               onChange={handleInputChange}
               required
             />
@@ -106,9 +109,9 @@ const SignUp = () => {
             />
             <input
               type="text"
-              name="username"
+              name="userName"
               placeholder="Username"
-              value={formData.username}
+              value={formData.userName}
               onChange={handleInputChange}
               required
             />
