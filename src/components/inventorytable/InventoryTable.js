@@ -23,6 +23,21 @@ const InventoryTable = () => {
     fetchProducts();
   }, []);
 
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      axios
+        .delete(`http://localhost:8080/products/${id}`)
+        .then(() => {
+          // Remove supplier from the data list
+          setData(data.filter((item) => item.id !== id)); // Correct the field
+          alert("Product deleted successfully");
+        })
+        .catch((error) => {
+          console.error("There was an error deleting the product!", error);
+        });
+    }
+  };
+
   const productColumns = [
     { field: "id", headerName: "Product ID", width: 100 }, // Use the correct "id" field
     {
@@ -62,7 +77,7 @@ const InventoryTable = () => {
             >
               <div className="viewButton">VIEW</div>
             </Link>
-            <div className="deleteButton">DELETE</div>
+            <div className="deleteButton" onClick={() => handleDelete(params.row.id)}>DELETE</div>
           </div>
         );
       },
