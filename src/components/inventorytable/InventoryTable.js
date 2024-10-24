@@ -28,8 +28,7 @@ const InventoryTable = () => {
       axios
         .delete(`http://localhost:8080/products/${id}`)
         .then(() => {
-          // Remove supplier from the data list
-          setData(data.filter((item) => item.id !== id)); // Correct the field
+          setData(data.filter((item) => item.id !== id));
           alert("Product deleted successfully");
         })
         .catch((error) => {
@@ -39,9 +38,9 @@ const InventoryTable = () => {
   };
 
   const productColumns = [
-    { field: "id", headerName: "Product ID", width: 100 }, // Use the correct "id" field
+    { field: "id", headerName: "Product ID", width: 100 }, 
     {
-      field: "productName",  // Match with the backend field name
+      field: "productName",  
       headerName: "Product",
       width: 230,
       // renderCell: (params) => {

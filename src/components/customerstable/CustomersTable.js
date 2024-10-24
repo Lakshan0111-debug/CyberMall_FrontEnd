@@ -44,7 +44,7 @@ const CustomersTable = () => {
       width: 230,
     },
     { field: "email", headerName: "E-mail", width: 150 },
-    { field: "phoneNo", headerName: "Phone No", width: 120 },
+    { field: "phoneNumber", headerName: "Phone No", width: 120 },
     { field: "address", headerName: "Address", width: 200 },
   ];
 
