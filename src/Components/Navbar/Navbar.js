@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Logo from '../../assets/CyberMallLogo.png';
-import { ShoppingBasketOutlined } from '@mui/icons-material';
+import { Person2Outlined, ShoppingBasketOutlined } from '@mui/icons-material';
 import { StoreContext } from '../../context/StoreContext';
 
 const Navbar = ({setShowLogin}) => {
@@ -26,7 +26,10 @@ const Navbar = ({setShowLogin}) => {
           <Link to='/cart'><ShoppingBasketOutlined/></Link>
           <div className={getTotalCartAmount()?'dot':''}></div>
         </div>
-        <button onClick={()=>setShowLogin(true)}>Sign Up</button>
+        <Link to='/logIn'><button>Sign Up</button></Link>
+        <div className='profileImg'>
+          <Link to='/customerProfile/customerId'><Person2Outlined/></Link>
+        </div>
       </div>
     </div>
   );

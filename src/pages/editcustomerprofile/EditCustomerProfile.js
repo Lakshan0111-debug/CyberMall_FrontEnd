@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './SignUp.css';
+import './EditCustomerProfile.css';
 import Navbar from '../../components/Navbar/Navbar';
 
-const SignUp = () => {
+const EditCustomerProfile = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,9 +28,9 @@ const SignUp = () => {
   return (
     <div>
       <Navbar/>
-      <div className="signup-container">
-        <div className="signup-box">
-          <h2>Sign Up</h2>
+      <div className="editCustomer">
+        <div className="editCustomerProfile">
+          <h2>Update Profile</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -88,15 +88,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-            <button type="submit">Create account</button>
-
-            <div className="terms">
-              <input type="checkbox" required /> By continuing, I agree to the terms of use & privacy policy.
-            </div>
-
-            <p className="login-link">
-              Already have an account? <a href="/logIn">Login here</a>
-            </p>
+            <button type="submit">Update Profile</button>
           </form>
         </div>
       </div>
@@ -104,4 +96,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default EditCustomerProfile;

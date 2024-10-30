@@ -1,4 +1,4 @@
-.signup-container {
+.editCustomer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +6,7 @@
     background-color: #f0f0f0;
   }
   
-  .signup-box {
+  .editCustomerProfile{
     background-color: white;
     border-radius: 8px;
     padding: 30px;
@@ -17,13 +17,13 @@
     align-items: center;
   }
   
-  .signup-box h2 {
+  .editCustomerProfile h2 {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
   }
   
-  .signup-box form {
+  .editCustomerProfile form {
     width: 100%; /* Full width for the form to center elements inside it */
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@
     justify-content: start;
   }
   
-  .signup-box input {
+  .editCustomerProfile input {
     width: 90%; /* Adjust width to be a little smaller for better spacing */
     padding: 12px;
     margin-bottom: 15px;
@@ -39,7 +39,7 @@
     border: 1px solid #ccc;
   }
   
-  .signup-box button {
+  .editCustomerProfile button {
     width: 90%; /* Same width for the button to match input fields */
     padding: 12px;
     background-color: #ff5722;
@@ -51,36 +51,6 @@
     margin-top: 10px;
   }
   
-  .signup-box button:hover {
+  .editCustomerProfile button:hover {
     background-color: #e64a19;
   }
-  
-  .terms {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    color: #666;
-    margin-top: 15px;
-  }
-  
-  .terms input {
-    margin-right: 8px;
-    transform: scale(1.2);
-  }
-  
-  .login-link {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
-    text-align: center;
-  }
-  
-  .login-link a {
-    color: #ff5722;
-    text-decoration: none;
-  }
-  
-  .login-link a:hover {
-    text-decoration: underline;
-  }
-  

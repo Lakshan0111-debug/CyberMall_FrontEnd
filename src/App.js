@@ -3,7 +3,6 @@ import Home from './pages/Home/Home';
 import SignUp from './pages/SignUp/SignUp';
 import LogIn from './pages/LogIn/LogIn';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
-import Item from './pages/Item/Item';
 import Review from './pages/Review/Review';
 import AdminDashboard from "./pages/admindashboard/AdminDashboard";
 import ManageInventory from './pages/manageinventory/ManageInventory';
@@ -22,6 +21,8 @@ import ManageReviews from './pages/managereviews/ManageReviews';
 import ViewReview from './pages/viewreview/ViewReview';
 import Cart from './pages/Cart/Cart';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
+import CustomerProfile from './pages/customerprofile/CustomerProfile';
+import EditCustomerProfile from './pages/editcustomerprofile/EditCustomerProfile';
 
 const router = createBrowserRouter([
   {
@@ -41,8 +42,12 @@ const router = createBrowserRouter([
     element: <ForgotPassword/>
   },
   {
-    path: "/item",
-    element: <Item/>
+    path: "/customerProfile/customerID",
+    element: <CustomerProfile/>
+  },
+  {
+    path: "/customerProfile/customerId/updateProfile",
+    element: <EditCustomerProfile/>
   },
   {
     path: "/review",
