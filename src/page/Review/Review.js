@@ -24,6 +24,8 @@ const Review = () => {
         setComment(e.target.value);
     };
 
+    
+
     // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,8 +35,10 @@ const Review = () => {
             setErrorMessage('Rating is required!');
         } else {
             setSubmitted(true); // Mark form as submitted
-            console.log('Rating:', rating);
+            console.log('Rating:', Number(rating));
             console.log('Comment:', comment); // Optional comment
+
+        
 
             // Clear form data after submission
             setRating(0);
